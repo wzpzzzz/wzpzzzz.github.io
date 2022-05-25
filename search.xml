@@ -11,9 +11,7 @@
         <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&#x27;blog&#x27;)</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> article</span><br></pre></td></tr></table></figure>]]></content>
       
       
-      
     </entry>
-    
     
     
     <entry>
