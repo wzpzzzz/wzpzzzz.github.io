@@ -22,6 +22,8 @@
             
             <tag> 编程 </tag>
             
+            <tag> 文档 </tag>
+            
         </tags>
       
     </entry>
@@ -29,13 +31,29 @@
     
     
     <entry>
-      <title>firstBlog</title>
-      <link href="/2022/05/25/MyFirstBlog/"/>
-      <url>/2022/05/25/MyFirstBlog/</url>
+      <title>MybatisPlus学习文档</title>
+      <link href="/2022/05/26/mybatisplus/"/>
+      <url>/2022/05/26/mybatisplus/</url>
       
-        <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&#x27;blog&#x27;)</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> article</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h1 id="MybatisPlus"><a href="#MybatisPlus" class="headerlink" title="MybatisPlus"></a>MybatisPlus</h1><h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><pre><code>https://baomidou.com/pages/24112f/</code></pre><h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.baomidou&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;最新版本&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="快速测试"><a href="#快速测试" class="headerlink" title="快速测试"></a>快速测试</h2><hr><h3 id="启动类注解"><a href="#启动类注解" class="headerlink" title="启动类注解"></a>启动类注解</h3><p>在 Spring Boot 启动类中添加 @MapperScan 注解，扫描 Mapper 文件夹：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@MapperScan(&quot;com.baomidou.mybatisplus.samples.quickstart.mapper&quot;)</span><br><span class="line">public class Application &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h3><p>编写实体类 User.java（此处使用了 Lombok (opens new window)简化代码）</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line">public class User &#123;</span><br><span class="line">    private Long id;</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private String email;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>编写 Mapper 包下的 UserMapper接口</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface UserMapper extends BaseMapper&lt;User&gt; &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h3 id="TableName"><a href="#TableName" class="headerlink" title="@TableName"></a>@TableName</h3><p>描述：表名注解，标识实体类对应的表<br>使用位置：实体类</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@TableName(&quot;sys_user&quot;)</span><br><span class="line">public class User &#123;</span><br><span class="line">    private Long id;</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private String email;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="TableId"><a href="#TableId" class="headerlink" title="@TableId"></a>@TableId</h3><p>描述：主键注解<br>使用位置：实体类主键字段</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@TableName(&quot;sys_user&quot;)</span><br><span class="line">public class User &#123;</span><br><span class="line">    @TableId</span><br><span class="line">    private Long id;</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private String email;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="TableField"><a href="#TableField" class="headerlink" title="@TableField"></a>@TableField</h3><p>描述：字段注解（非主键）</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@TableName(&quot;sys_user&quot;)</span><br><span class="line">public class User &#123;</span><br><span class="line">    @TableId</span><br><span class="line">    private Long id;</span><br><span class="line">    @TableField(&quot;nickname&quot;)</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private String email;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><h2 id="CRUD接口（核心）"><a href="#CRUD接口（核心）" class="headerlink" title="CRUD接口（核心）"></a>CRUD接口（核心）</h2><pre><code>详情见官方文档https://baomidou.com/pages/49cc81/#service-crud-%E6%8E%A5%E5%8F%A3懒得敲了</code></pre><hr><h2 id="条件构造器"><a href="#条件构造器" class="headerlink" title="条件构造器"></a>条件构造器</h2><h3 id="eq"><a href="#eq" class="headerlink" title="eq"></a>eq</h3><p>等于&#x3D;</p><h3 id="ne"><a href="#ne" class="headerlink" title="ne"></a>ne</h3><p>不等于&lt;&gt;</p><h3 id="gt"><a href="#gt" class="headerlink" title="gt"></a>gt</h3><p>大于&gt;</p><h3 id="ge"><a href="#ge" class="headerlink" title="ge"></a>ge</h3><p>大于等于 &gt;&#x3D;</p><h3 id="lt"><a href="#lt" class="headerlink" title="lt"></a>lt</h3><p>小于&lt;</p><h3 id="le"><a href="#le" class="headerlink" title="le"></a>le</h3><p>小于等于&lt;&#x3D;</p><h3 id="between-x2F-not-between"><a href="#between-x2F-not-between" class="headerlink" title="between &#x2F; not between"></a>between &#x2F; not between</h3><p>在值1和值2之间 &#x2F; 不在值1和值2之间</p><h3 id="like-x2F-not-like"><a href="#like-x2F-not-like" class="headerlink" title="like &#x2F; not like"></a>like &#x2F; not like</h3><p>LIKE ‘%值%’ &#x2F; NOT LIKE ‘%值%’</p>]]></content>
       
       
+      <categories>
+          
+          <category> Java后端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 文档 </tag>
+            
+            <tag> Java </tag>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -47,6 +65,19 @@
       <url>/2022/05/25/top/</url>
       
         <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>firstBlog</title>
+      <link href="/2022/05/25/MyFirstBlog/"/>
+      <url>/2022/05/25/MyFirstBlog/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&#x27;blog&#x27;)</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> article</span><br></pre></td></tr></table></figure>]]></content>
       
       
       
