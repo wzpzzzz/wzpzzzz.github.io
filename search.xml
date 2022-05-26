@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Markdown语法</title>
+      <link href="/2022/05/26/makedown/"/>
+      <url>/2022/05/26/makedown/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Markdown语法"><a href="#Markdown语法" class="headerlink" title="Markdown语法"></a>Markdown语法</h1><h2 id="1-什么是-Markdown"><a href="#1-什么是-Markdown" class="headerlink" title="1.什么是 Markdown"></a>1.什么是 Markdown</h2><p> Markdown 是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式</p><h2 id="2-标题"><a href="#2-标题" class="headerlink" title="2.标题"></a>2.标题</h2><pre><code>#一级标题##二级标题##三级标题...</code></pre><h2 id="3-分割线"><a href="#3-分割线" class="headerlink" title="3.分割线"></a>3.分割线</h2><pre><code>---***</code></pre><h2 id="4-粗体和斜体"><a href="#4-粗体和斜体" class="headerlink" title="4.粗体和斜体"></a>4.粗体和斜体</h2><pre><code>使用 *斜体* 和 **粗体** 分别表示斜体和粗体</code></pre><h2 id="5-列表"><a href="#5-列表" class="headerlink" title="5.列表"></a>5.列表</h2><pre><code>使用 -、+ 和 * 表示无序列表，前后留一行空白，可嵌套使用 1. （点号后面有个空格）表示有序列表，可嵌套</code></pre><h2 id="6-代码块"><a href="#6-代码块" class="headerlink" title="6.代码块"></a>6.代码块</h2><pre><code>使用反引号``</code></pre><p>如<code>system.out(println(&quot;makrdown&quot;))</code></p><h2 id="7-想到什么再补充。。。"><a href="#7-想到什么再补充。。。" class="headerlink" title="7.想到什么再补充。。。"></a>7.想到什么再补充。。。</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> EtcThings </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>firstBlog</title>
       <link href="/2022/05/25/MyFirstBlog/"/>
       <url>/2022/05/25/MyFirstBlog/</url>
@@ -11,7 +36,9 @@
         <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&#x27;blog&#x27;)</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> article</span><br></pre></td></tr></table></figure>]]></content>
       
       
+      
     </entry>
+    
     
     
     <entry>
