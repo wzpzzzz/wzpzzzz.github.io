@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>blog运行与问题</title>
+      <link href="/2023/10/08/%E5%8D%9A%E5%AE%A2%E6%93%8D%E4%BD%9C/"/>
+      <url>/2023/10/08/%E5%8D%9A%E5%AE%A2%E6%93%8D%E4%BD%9C/</url>
+      
+        <content type="html"><![CDATA[<h1 id="关于重启blog"><a href="#关于重启blog" class="headerlink" title="关于重启blog"></a>关于重启blog</h1><p>仔细想来还是在2022年中的那段时间第一次写blog，当时还在学习java，在为暑假能否找一份比较好的实习而焦虑。在那个时候写blog对我来说算是一种放松和成就感吧，谈不上记录什么，也没有可以在那样匆忙的日子里花心思记录一些日常琐事与个人成长。<br>现在算是这一两年来，少有的相对清闲的日子，当然也许只是我以为的清闲日子，毕竟这种事情在我22年的人生中没少干过。之后的日子希望把匆忙时间里的小遗憾弥补一下，也可以说是督促自己学习，因为毕竟没有学什么我也不好意思写blog，也可以说是记录一下自己的科研与学习生活吧，记录总是要从一点一滴开始，时间久了才比较有意义。还有一点学习写作的意思，曾经想着在古稀之年为自己的人生写一本自传，如果还是小学生文笔，想来也是比较幼稚的事情。<br>说起来一个markdown语法我居然写了四年还没用熟练，现在仍是一边小窗开着markdown文档一边写，也许以后会有写文档的工作需求，我总不可能那个时候还像现在这样当word一样写吧。</p><h2 id="小目标"><a href="#小目标" class="headerlink" title="小目标"></a>小目标</h2><p>这次重启的blog希望能多写一些技术文档，多写一些日常记录，同时还想把blog美化一下，现在看来还是有些地方看起来不那么协调匀称，先从掌握一些blog操作开始吧，素材打算是闲暇时间搜集一下，不打游戏想来还是会多一些清闲时光。把博客里面的英文都换成中文，不知道什么时候开始，我总是喜欢用些不恰当的英文，有时候反倒是影响自己阅读，还是中文简单明了。还有很重要的一点是把博客文件结构优化一下，现在有些乱乱的，特别是图片部分。</p><h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo c #清除缓存</span><br><span class="line">hexo g #生产博客</span><br><span class="line">hexo s #本地预览博客</span><br><span class="line">hexo d #上传博客</span><br></pre></td></tr></table></figure><h1 id="博客模板"><a href="#博客模板" class="headerlink" title="博客模板"></a>博客模板</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: </span><br><span class="line">date: yy-mm-hh hh:mm:ss</span><br><span class="line">description:    </span><br><span class="line">categories: </span><br><span class="line">  - </span><br><span class="line">tag: </span><br><span class="line">  - </span><br><span class="line">copyright: false</span><br><span class="line">copyright_info: false</span><br><span class="line">copyright_url: false</span><br><span class="line">top_img: &#x27;./img/&#x27;</span><br><span class="line">cover: &#x27;./img/&#x27;</span><br><span class="line">sticky:1 #置顶 </span><br><span class="line">---</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 博客相关 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 文档 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>考研七月复盘</title>
       <link href="/2022/07/22/%E4%B8%83%E6%9C%88%E5%A4%8D%E7%9B%98/"/>
       <url>/2022/07/22/%E4%B8%83%E6%9C%88%E5%A4%8D%E7%9B%98/</url>
@@ -40,7 +67,7 @@
       
       <categories>
           
-          <category> Personal </category>
+          <category> 我的日常 </category>
           
       </categories>
       
@@ -48,6 +75,8 @@
         <tags>
             
             <tag> 节日 </tag>
+            
+            <tag> 日常 </tag>
             
         </tags>
       
@@ -94,7 +123,7 @@
       
       <categories>
           
-          <category> EtcThings </category>
+          <category> 编程 </category>
           
       </categories>
       
