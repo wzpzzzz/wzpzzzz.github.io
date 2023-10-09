@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>注意力机制</title>
+      <link href="/2023/10/09/attention/"/>
+      <url>/2023/10/09/attention/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Attention理论"><a href="#Attention理论" class="headerlink" title="Attention理论"></a>Attention理论</h1><h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><h3 id="核心目标："><a href="#核心目标：" class="headerlink" title="核心目标："></a>核心目标：</h3><p>从众多（关键的&#x2F;不关键的）信息中选择出对当前任务目标更关键的信息，将注意力转移到关键信息上</p><h3 id="典型的注意力机制"><a href="#典型的注意力机制" class="headerlink" title="典型的注意力机制"></a>典型的注意力机制</h3><ul><li>自注意力机制</li><li>空间注意力机制</li><li>时间注意力机制<h3 id="怎么转移注意力："><a href="#怎么转移注意力：" class="headerlink" title="怎么转移注意力："></a>怎么转移注意力：</h3></li></ul><ol><li>我&#x3D;查询对象Q   图片&#x3D;被查询对象V</li><li>我看到这张图判断V中哪些更重要，计算Q和V中事物的重要程度</li><li>重要度计算：类似相似度计算，对Q和K（$k_1$、$k_2$ … $k_n$）作点乘运算（求内积）。通过点乘运算获得Q和K里每一个事物的相似度，即Q和$k_1$的相似度$s_1$，Q和$k_2$的相似度$s_2$，Q和$k_n$的相似度$s_n$</li><li>做一层$softmax(a_1,a_2,\cdots,a_n)$（归一化）获得概率，从而找出哪个对Q而言更重要</li><li>对获得的数据进行汇总，$(a_1,a_2,\cdots,a_n)<em>(a、v_1,v_2,\cdots,v_n)&#x3D;(a_1</em>v_1+a_2<em>v_2+\cdots+a_n</em>v_n)$ 得到了一个V’，V’包含了哪些重要，哪些不重要，用V’代替原来的V</li><li>图中，Key和Value一般情况下相等，如果不相等也具有某种联系</li></ol><p><img src="https://imgmd.oss-cn-shanghai.aliyuncs.com/BERT_IMG/attention-%E8%AE%A1%E7%AE%97%E5%9B%BE.png" alt="img" title="注意力机制"> </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 科研 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>blog运行与问题</title>
       <link href="/2023/10/08/%E5%8D%9A%E5%AE%A2%E6%93%8D%E4%BD%9C/"/>
       <url>/2023/10/08/%E5%8D%9A%E5%AE%A2%E6%93%8D%E4%BD%9C/</url>
