@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Pytorch</title>
+      <link href="/2023/10/12/pytorch/"/>
+      <url>/2023/10/12/pytorch/</url>
+      
+        <content type="html"><![CDATA[<h1 id="pytorch"><a href="#pytorch" class="headerlink" title="pytorch"></a>pytorch</h1><h2 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h2><h3 id="Tensor基础操作"><a href="#Tensor基础操作" class="headerlink" title="Tensor基础操作"></a>Tensor基础操作</h3><p>引入pytorch模块并创建张量</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">x=torch.tensor([1.0,2.0,3.0])</span><br></pre></td></tr></table></figure><p><code>创建了值为（1.0，2.0，3.0）的张量</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 科研 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>卷积神经网络</title>
       <link href="/2023/10/09/CNN/"/>
       <url>/2023/10/09/CNN/</url>
