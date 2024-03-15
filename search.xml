@@ -4,31 +4,6 @@
   
     
     <entry>
-      <title>动手学深度学习 Pytorch</title>
-      <link href="/2023/10/12/pytorch/"/>
-      <url>/2023/10/12/pytorch/</url>
-      
-        <content type="html"><![CDATA[<h1 id="入门知识"><a href="#入门知识" class="headerlink" title="入门知识"></a>入门知识</h1><h2 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h2><h3 id="Tensor创建"><a href="#Tensor创建" class="headerlink" title="Tensor创建"></a>Tensor创建</h3><p>引入pytorch模块并创建张量</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">x=torch.tensor([1.0,2.0,3.0])</span><br></pre></td></tr></table></figure><blockquote><p>x&#x3D;（1.0，2.0，3.0）<br>其他创建方式</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x=torch.arange(12) #0-11</span><br><span class="line">x=torch.randn(3,4) #随机产生0-1的数</span><br><span class="line">x=torch.zeros(5) #张量元素值全为0</span><br><span class="line">x=torch.ones(5) #张量元素值全为1</span><br></pre></td></tr></table></figure><blockquote><p>tensor([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11])<br><br>tensor([[-0.9354,  0.6697, -0.0071,  0.4678],<br><br>        [-0.1547, -1.5742,  0.6971, -1.0173],<br><br><br>        [ 0.5576, -1.0236,  0.8145,  0.7981]])<br><br>tensor([0., 0., 0., 0., 0.])<br>tensor([1., 1., 1., 1., 1.])</p></blockquote><h3 id="Tensor操作"><a href="#Tensor操作" class="headerlink" title="Tensor操作"></a>Tensor操作</h3><p>改变tensor形状</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x=torch.arrange(12)</span><br><span class="line">x=x.reshape(3,4)</span><br></pre></td></tr></table></figure><p>输出张量元素个数</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.shape</span><br></pre></td></tr></table></figure><p>对张量中的所有元素求和</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.Sum()</span><br></pre></td></tr></table></figure><p>张量中元素访问机制和Python数组相同，可以通过索引访问</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x[-1] #访问最后一个元素</span><br><span class="line">x[1:6] #访问第1到第5个元素</span><br><span class="line">x[0:2,:] #访问x中第1第2行中所有的元素</span><br></pre></td></tr></table></figure><h3 id="广播机制"><a href="#广播机制" class="headerlink" title="广播机制"></a>广播机制</h3><p>在对两个及以上张量进行操作时，若两个张量形状不同，则需要通过广播机制来执行元素操作</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = torch.arange(3).reshape((3, 1))</span><br><span class="line">b = torch.arange(2).reshape((1, 2))</span><br><span class="line">a+b</span><br></pre></td></tr></table></figure><blockquote><p>a为一个三行一列的张量，b为一行两列张量，二者相加时，a和b都会被扩展为一个形状相同的举证，a将复制列，b将复制行</p></blockquote><h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><h3 id="读取csv数据集"><a href="#读取csv数据集" class="headerlink" title="读取csv数据集"></a>读取csv数据集</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd #使用pandas库操作表</span><br><span class="line">data=pd.read_csv(data_file) #data_file为csv文件名</span><br></pre></td></tr></table></figure><blockquote><p>输出 ：<br><img src="/../img/img_posts/post_code/pandastable.png" alt="img"><br></p></blockquote><blockquote><p>什么是csv文件？<br>    CSV（Comma-Separated Values，逗号分隔的值）是一种简单、实用的文件格式，用于存储和表示包括文本、数值等各种类型的数据。CSV 文件通常以 .csv 作为文件扩展名。这种文件格式的一个显著特点是：文件内的数据以逗号 , 分隔，呈现一个表格形式。CSV 文件已广泛应用于存储、传输和编辑数据。</p></blockquote><h3 id="处理缺失值"><a href="#处理缺失值" class="headerlink" title="处理缺失值"></a>处理缺失值</h3><p>NaN代表缺失值，一般处理缺失值有插值法和删除法， 其中插值法用一个替代值弥补缺失值，而删除法则直接忽略缺失值。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">inputs,outputs=data.iloc[:,0:2],data.iloc[:,2]</span><br><span class="line"># 使用iloc将数据分为inputs和outputs</span><br><span class="line">inputs=inputs.fillna(inputs.mean()) </span><br><span class="line"># 将inputs中为NaN的值用inputs的均值代替</span><br></pre></td></tr></table></figure><p>对于inputs中的类别值或离散值，我们将“NaN”视为一个类别。 由于“巷子类型”（“Alley”）列只接受两种类型的类别值“Pave”和“NaN”， pandas可以自动将此列转换为两列“Alley_Pave”和“Alley_nan”。 巷子类型为“Pave”的行会将“Alley_Pave”的值设置为1，“Alley_nan”的值设置为0。 缺少巷子类型的行会将“Alley_Pave”和“Alley_nan”分别设置为0和1。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">inputs = pd.get_dummies(inputs, dummy_na=True)</span><br><span class="line">print(inputs)</span><br></pre></td></tr></table></figure><blockquote><p>输出:<br><img src="/../img/img_posts/post_code/dummy_na.png" alt="img"><br></p></blockquote><h3 id="pandas数据转换为张量格式"><a href="#pandas数据转换为张量格式" class="headerlink" title="pandas数据转换为张量格式"></a>pandas数据转换为张量格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x=torch.tensor(inputs.to_numpy(dtype=float))</span><br></pre></td></tr></table></figure><h1 id="线性神经网络"><a href="#线性神经网络" class="headerlink" title="线性神经网络"></a>线性神经网络</h1><h2 id="线性回归简洁实现"><a href="#线性回归简洁实现" class="headerlink" title="线性回归简洁实现"></a>线性回归简洁实现</h2><p>这一部分没有看懂</p><h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><ol><li>L2 Loss 均方误差损失函数</li><li>L1 Loss 绝对值损失函数</li><li>Huber’s Robust Loss <br> <img src="/../img/img_posts/post_code/huberloss.png" alt="img"></li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> 科研 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 编程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Java学习</title>
       <link href="/2023/10/12/Java%E5%AD%A6%E4%B9%A0/"/>
       <url>/2023/10/12/Java%E5%AD%A6%E4%B9%A0/</url>
@@ -39,56 +14,6 @@
       <categories>
           
           <category> Java后端 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 编程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>卷积神经网络</title>
-      <link href="/2023/10/09/CNN/"/>
-      <url>/2023/10/09/CNN/</url>
-      
-        <content type="html"><![CDATA[<h1 id="CNN卷积神经网络"><a href="#CNN卷积神经网络" class="headerlink" title="CNN卷积神经网络"></a>CNN卷积神经网络</h1><h2 id="CNN构成"><a href="#CNN构成" class="headerlink" title="CNN构成"></a>CNN构成</h2><h3 id="卷积层Convolution"><a href="#卷积层Convolution" class="headerlink" title="卷积层Convolution"></a>卷积层Convolution</h3><p>用卷积运算对原始图像或上一层的特征进行变换的层，在卷积层中，为了从图像中提取到多种特征，通常使用多个卷积核对输入图像进行不同的卷积操作</p><h3 id="池化层Pooling"><a href="#池化层Pooling" class="headerlink" title="池化层Pooling"></a>池化层Pooling</h3><h3 id="全连接层fully—connected"><a href="#全连接层fully—connected" class="headerlink" title="全连接层fully—connected"></a>全连接层fully—connected</h3>]]></content>
-      
-      
-      <categories>
-          
-          <category> 科研 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 编程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>注意力机制</title>
-      <link href="/2023/10/09/attention/"/>
-      <url>/2023/10/09/attention/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Attention理论"><a href="#Attention理论" class="headerlink" title="Attention理论"></a>Attention理论</h1><h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><h3 id="核心目标："><a href="#核心目标：" class="headerlink" title="核心目标："></a>核心目标：</h3><p>从众多（关键的&#x2F;不关键的）信息中选择出对当前任务目标更关键的信息，将注意力转移到关键信息上</p><h3 id="典型的注意力机制"><a href="#典型的注意力机制" class="headerlink" title="典型的注意力机制"></a>典型的注意力机制</h3><ul><li>自注意力机制</li><li>空间注意力机制</li><li>时间注意力机制</li></ul><h3 id="怎么转移注意力："><a href="#怎么转移注意力：" class="headerlink" title="怎么转移注意力："></a>怎么转移注意力：</h3><ol><li>我&#x3D;查询对象Q   图片&#x3D;被查询对象V</li><li>我看到这张图判断V中哪些更重要，计算Q和V中事物的重要程度</li><li>重要度计算：类似相似度计算，对Q和K（$k_1$、$k_2$ … $k_n$）作点乘运算（求内积）。通过点乘运算获得Q和K里每一个事物的相似度，即Q和$k_1$的相似度$s_1$，Q和$k_2$的相似度$s_2$，Q和$k_n$的相似度$s_n$</li><li>做一层$softmax(a_1,a_2,\cdots,a_n)$（归一化）获得概率，从而找出哪个对Q而言更重要</li><li>对获得的数据进行汇总，$(a_1,a_2,\cdots,a_n)<em>(a、v_1,v_2,\cdots,v_n)&#x3D;(a_1</em>v_1+a_2<em>v_2+\cdots+a_n</em>v_n)$ 得到了一个V’，V’包含了哪些重要，哪些不重要，用V’代替原来的V</li><li>图中，Key和Value一般情况下相等，如果不相等也具有某种联系</li></ol><p><img src="https://imgmd.oss-cn-shanghai.aliyuncs.com/BERT_IMG/attention-%E8%AE%A1%E7%AE%97%E5%9B%BE.png" alt="img" title="注意力机制"> </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 科研 </category>
           
       </categories>
       
@@ -131,33 +56,6 @@
     
     
     <entry>
-      <title>考研七月复盘</title>
-      <link href="/2022/07/22/%E4%B8%83%E6%9C%88%E5%A4%8D%E7%9B%98/"/>
-      <url>/2022/07/22/%E4%B8%83%E6%9C%88%E5%A4%8D%E7%9B%98/</url>
-      
-        <content type="html"><![CDATA[<h1 id="考研-2022-7-复盘"><a href="#考研-2022-7-复盘" class="headerlink" title="考研 2022.7 复盘"></a>考研 2022.7 复盘</h1><h2 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h2><h3 id="进度："><a href="#进度：" class="headerlink" title="进度："></a>进度：</h3><p>高数辅导讲义前三章完成，高等数学完成了前半本的学习与刷题。题目在刷660和880，其他习题集没有刷</p><h3 id="反思："><a href="#反思：" class="headerlink" title="反思："></a>反思：</h3><p>计算能力比较差，即使想到的方法也不能确定算对，对于比较复杂的计算经常算了一半或者不确定这个方法是否正确的情况，没有信心算到底。<br>对概念的理解不够透彻，选择题错误率非常高，而且没有做错题集的习惯。</p><hr><h2 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h2><h3 id="进度：-1"><a href="#进度：-1" class="headerlink" title="进度："></a>进度：</h3><p>真题卷未开始刷，每天一百个单词，过完了考研大纲词汇的核心词部分。</p><h3 id="反思：-1"><a href="#反思：-1" class="headerlink" title="反思："></a>反思：</h3><p>英语进度较慢，八月开始刷早年真题与阅读课</p><hr><h2 id="408"><a href="#408" class="headerlink" title="408"></a>408</h2><h3 id="进度：-2"><a href="#进度：-2" class="headerlink" title="进度："></a>进度：</h3><p>数据结构完成了半本书的复习，其他三门均未开始</p><h3 id="反思：-2"><a href="#反思：-2" class="headerlink" title="反思："></a>反思：</h3><p>进度严重落后，应该找好适合自己的学习方法，争取在十月前完成第一次的复习</p><hr><h2 id="政治"><a href="#政治" class="headerlink" title="政治"></a>政治</h2><h3 id="进度：-3"><a href="#进度：-3" class="headerlink" title="进度："></a>进度：</h3><p>未开始</p><h3 id="反思：-3"><a href="#反思：-3" class="headerlink" title="反思："></a>反思：</h3><p>未开始</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 考研 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 学习 </tag>
-            
-            <tag> 考试复习 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Birth 2022</title>
       <link href="/2022/06/01/birth/"/>
       <url>/2022/06/01/birth/</url>
@@ -185,78 +83,9 @@
     
     
     <entry>
-      <title>MybatisPlus学习文档</title>
-      <link href="/2022/05/26/mybatisplus/"/>
-      <url>/2022/05/26/mybatisplus/</url>
-      
-        <content type="html"><![CDATA[<h1 id="MybatisPlus"><a href="#MybatisPlus" class="headerlink" title="MybatisPlus"></a>MybatisPlus</h1><h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><pre><code>https://baomidou.com/pages/24112f/</code></pre><h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.baomidou&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;最新版本&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="快速测试"><a href="#快速测试" class="headerlink" title="快速测试"></a>快速测试</h2><hr><h3 id="启动类注解"><a href="#启动类注解" class="headerlink" title="启动类注解"></a>启动类注解</h3><p>在 Spring Boot 启动类中添加 @MapperScan 注解，扫描 Mapper 文件夹：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@MapperScan(&quot;com.baomidou.mybatisplus.samples.quickstart.mapper&quot;)</span><br><span class="line">public class Application &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h3><p>编写实体类 User.java（此处使用了 Lombok (opens new window)简化代码）</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line">public class User &#123;</span><br><span class="line">    private Long id;</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private String email;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>编写 Mapper 包下的 UserMapper接口</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface UserMapper extends BaseMapper&lt;User&gt; &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h3 id="TableName"><a href="#TableName" class="headerlink" title="@TableName"></a>@TableName</h3><p>描述：表名注解，标识实体类对应的表<br>使用位置：实体类</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@TableName(&quot;sys_user&quot;)</span><br><span class="line">public class User &#123;</span><br><span class="line">    private Long id;</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private String email;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="TableId"><a href="#TableId" class="headerlink" title="@TableId"></a>@TableId</h3><p>描述：主键注解<br>使用位置：实体类主键字段</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@TableName(&quot;sys_user&quot;)</span><br><span class="line">public class User &#123;</span><br><span class="line">    @TableId</span><br><span class="line">    private Long id;</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private String email;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="TableField"><a href="#TableField" class="headerlink" title="@TableField"></a>@TableField</h3><p>描述：字段注解（非主键）</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@TableName(&quot;sys_user&quot;)</span><br><span class="line">public class User &#123;</span><br><span class="line">    @TableId</span><br><span class="line">    private Long id;</span><br><span class="line">    @TableField(&quot;nickname&quot;)</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private String email;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><h2 id="CRUD接口（核心）"><a href="#CRUD接口（核心）" class="headerlink" title="CRUD接口（核心）"></a>CRUD接口（核心）</h2><pre><code>详情见官方文档https://baomidou.com/pages/49cc81/#service-crud-%E6%8E%A5%E5%8F%A3懒得敲了</code></pre><hr><h2 id="条件构造器"><a href="#条件构造器" class="headerlink" title="条件构造器"></a>条件构造器</h2><h3 id="eq"><a href="#eq" class="headerlink" title="eq"></a>eq</h3><p>等于&#x3D;</p><h3 id="ne"><a href="#ne" class="headerlink" title="ne"></a>ne</h3><p>不等于&lt;&gt;</p><h3 id="gt"><a href="#gt" class="headerlink" title="gt"></a>gt</h3><p>大于&gt;</p><h3 id="ge"><a href="#ge" class="headerlink" title="ge"></a>ge</h3><p>大于等于 &gt;&#x3D;</p><h3 id="lt"><a href="#lt" class="headerlink" title="lt"></a>lt</h3><p>小于&lt;</p><h3 id="le"><a href="#le" class="headerlink" title="le"></a>le</h3><p>小于等于&lt;&#x3D;</p><h3 id="between-x2F-not-between"><a href="#between-x2F-not-between" class="headerlink" title="between &#x2F; not between"></a>between &#x2F; not between</h3><p>在值1和值2之间 &#x2F; 不在值1和值2之间</p><h3 id="like-x2F-not-like"><a href="#like-x2F-not-like" class="headerlink" title="like &#x2F; not like"></a>like &#x2F; not like</h3><p>LIKE ‘%值%’ &#x2F; NOT LIKE ‘%值%’</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Java后端 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-            <tag> 数据库 </tag>
-            
-            <tag> 文档 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Markdown语法</title>
-      <link href="/2022/05/26/makedown/"/>
-      <url>/2022/05/26/makedown/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Markdown语法"><a href="#Markdown语法" class="headerlink" title="Markdown语法"></a>Markdown语法</h1><h2 id="1-什么是-Markdown"><a href="#1-什么是-Markdown" class="headerlink" title="1.什么是 Markdown"></a>1.什么是 Markdown</h2><p> Markdown 是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式</p><h2 id="2-标题"><a href="#2-标题" class="headerlink" title="2.标题"></a>2.标题</h2><pre><code>#一级标题##二级标题##三级标题...</code></pre><h2 id="3-分割线"><a href="#3-分割线" class="headerlink" title="3.分割线"></a>3.分割线</h2><pre><code>---***</code></pre><h2 id="4-粗体和斜体"><a href="#4-粗体和斜体" class="headerlink" title="4.粗体和斜体"></a>4.粗体和斜体</h2><pre><code>使用 *斜体* 和 **粗体** 分别表示斜体和粗体</code></pre><h2 id="5-列表"><a href="#5-列表" class="headerlink" title="5.列表"></a>5.列表</h2><pre><code>使用 -、+ 和 * 表示无序列表，前后留一行空白，可嵌套使用 1. （点号后面有个空格）表示有序列表，可嵌套</code></pre><h2 id="6-代码块"><a href="#6-代码块" class="headerlink" title="6.代码块"></a>6.代码块</h2><pre><code>使用反引号``</code></pre><p>如<code>system.out(println(&quot;makrdown&quot;))</code></p><h2 id="7-想到什么再补充。。。"><a href="#7-想到什么再补充。。。" class="headerlink" title="7.想到什么再补充。。。"></a>7.想到什么再补充。。。</h2>]]></content>
-      
-      
-      <categories>
-          
-          <category> 编程 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 文档 </tag>
-            
-            <tag> 编程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>firstBlog</title>
-      <link href="/2022/05/25/MyFirstBlog/"/>
-      <url>/2022/05/25/MyFirstBlog/</url>
-      
-        <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&#x27;blog&#x27;)</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> article</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>l o s t i n l i g h t s</title>
-      <link href="/2022/05/25/top/"/>
-      <url>/2022/05/25/top/</url>
+      <link href="/2022/05/25/mylife/"/>
+      <url>/2022/05/25/mylife/</url>
       
         <content type="html"><![CDATA[]]></content>
       
